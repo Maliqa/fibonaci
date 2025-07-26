@@ -3,8 +3,8 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.urls import path
 from django.core.management import execute_from_command_line
-from django.views.decorators.csrf import csrf_exempt
-# HTML template as string
+from django.views.decorators.csrf import csrf_exempt  # Import ini!
+
 HTML_FORM = """
 <!DOCTYPE html>
 <html>
@@ -40,6 +40,7 @@ def fibonacci_2d(seed, jumlah):
         angka1, angka2 = angka2, next_angka
     return hasil
 
+@csrf_exempt  # Dekorator HARUS di sini!
 def prediksi_view(request):
     hasil = []
     error = ""
@@ -68,7 +69,6 @@ def prediksi_view(request):
         form += "</ul>"
     return HttpResponse(HTML_FORM.format(content=form))
 
-# Django minimal settings
 settings.configure(
     DEBUG=True,
     SECRET_KEY='a',
