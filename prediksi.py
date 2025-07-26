@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.urls import path
 from django.core.management import execute_from_command_line
-
+from django.views.decorators.csrf import csrf_exempt
 # HTML template as string
 HTML_FORM = """
 <!DOCTYPE html>
